@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE estudiante SYSTEM "redSocial.dtd">
-<estudiante nombre="Diego" apellidos="Villa García">
+<persona nombre="Diego" apellidos="Villa García">
 	<datos>
 		<nacimiento>
 			<fechaNacimiento>22/06/2001</fechaNacimiento>
@@ -207,4 +207,4 @@
 			</datos>
 		</persona>
 	</persona>
-</estudiante>
+</persona>

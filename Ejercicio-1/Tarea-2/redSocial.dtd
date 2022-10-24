@@ -1,0 +1,22 @@
+<!ELEMENT estudiante (datos, persona*)>
+<!ELEMENT persona (datos, persona*)>
+<!ELEMENT datos (nacimiento, residencia, foto+, video*, comentario*)>
+<!ELEMENT nacimiento (fechaNacimiento, lugarNacimiento)>
+<!ELEMENT residencia (lugarResidencia)>
+<!ELEMENT lugarNacimiento (coordenadas)>
+<!ELEMENT lugarResidencia (coordenadas)>
+
+<!ATTLIST estudiante 
+	nombre CDATA #REQUIRED
+	apellidos CDATA #REQUIRED>
+<!ATTLIST persona 
+	nombre CDATA #REQUIRED
+	apellidos CDATA #REQUIRED>
+<!ATTLIST lugarNacimiento
+	nombre CDATA #REQUIRED>
+<!ATTLIST lugarResidencia
+	nombre CDATA #REQUIRED>
+<!ATTLIST coordenadas 
+	latitud CDATA #REQUIRED
+	longitud CDATA #REQUIRED
+	altitud CDATA #REQUIRED>

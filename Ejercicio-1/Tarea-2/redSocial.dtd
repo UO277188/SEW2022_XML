@@ -8,7 +8,7 @@
 <!ELEMENT coordenadas EMPTY>
 <!ELEMENT foto (#PCDATA)>
 <!ELEMENT video (#PCDATA)>
-<!ELEMENT comentarios (#PCDATA)>
+<!ELEMENT comentario (#PCDATA)>
 
 <!ATTLIST persona 
 	nombre CDATA #REQUIRED

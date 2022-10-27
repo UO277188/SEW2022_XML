@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE persona SYSTEM "redSocial.dtd"> 
+<!DOCTYPE persona SYSTEM "redSocial.dtd">
 <persona nombre="Diego" apellidos="Villa García">
 	<datos>
 		<nacimiento>
@@ -14,6 +14,8 @@
 			</lugarResidencia>
 		</residencia>
 		<foto>generico.jpg</foto>
+		<video>video.mp4</video>
+		<comentario>Estudiante de SEW</comentario>
 	</datos>
 	<persona nombre="Eduardo" apellidos="Martínez Suárez">
 		<datos>

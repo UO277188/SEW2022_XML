@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/redSocial" elementFormDefault="qualified" targetNamespace="http://tempuri.org/redSocial" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="persona">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="datos" />
+        <xs:sequence minOccurs="0" maxOccurs="1">
+          <xs:element ref="persona" />
+          <xs:element ref="persona" />
+          <xs:element ref="persona" />
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attribute name="nombre" type="xs:string" use="required" />
+      <xs:attribute name="apellidos" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="datos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="nacimiento" />
+        <xs:element ref="residencia" />
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="foto" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="video" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="comentario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nacimiento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="fechaNacimiento" />
+        <xs:element ref="lugarNacimiento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fechaNacimiento" type="xs:string" />
+  <xs:element name="residencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="lugarResidencia" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lugarNacimiento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="coordenadas" />
+      </xs:sequence>
+      <xs:attribute name="nombre" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lugarResidencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="coordenadas" />
+      </xs:sequence>
+      <xs:attribute name="nombre" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="coordenadas">
+    <xs:complexType>
+      <xs:attribute name="latitud" type="xs:string" use="required" />
+      <xs:attribute name="longitud" type="xs:string" use="required" />
+      <xs:attribute name="altitud" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="foto" type="xs:string" />
+  <xs:element name="video" type="xs:string" />
+  <xs:element name="comentario" type="xs:string" />
+</xs:schema>

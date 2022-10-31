@@ -13,8 +13,8 @@
 				<coordenadas latitud="43.387149" longitud="-5.823475" altitud="166"></coordenadas>
 			</lugarResidencia>
 		</residencia>
-		<foto>multimedia/generico.jpg</foto>
-		<video>multimedia/video.mp4</video>
+		<foto>generico.jpg</foto>
+		<video>video.mp4</video>
 		<comentario>Estudiante de SEW</comentario>
 	</datos>
 	<persona nombre="Eduardo" apellidos="Martínez Suárez">
@@ -30,7 +30,7 @@
 					<coordenadas latitud="43.295013" longitud="-5.683431" altitud="280"></coordenadas>
 				</lugarResidencia>
 			</residencia>
-			<foto>multimedia/generico.jpg</foto>
+			<foto>generico.jpg</foto>
 		</datos>
 		<persona nombre="Martín" apellidos="Suárez Gómez">
 			<datos>
@@ -45,7 +45,7 @@
 						<coordenadas latitud="43.461713" longitud="-5.058748" altitud="0"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 		<persona nombre="Marta" apellidos="Pérez Pérez">
@@ -61,7 +61,7 @@
 						<coordenadas latitud="43.313614" longitud="-5.06585" altitud="424"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 		<persona nombre="Edgar" apellidos="López Gómez">
@@ -77,7 +77,7 @@
 						<coordenadas latitud="43.539111" longitud="-6.72337" altitud="55"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 	</persona>
@@ -94,7 +94,7 @@
 					<coordenadas latitud="43.402768" longitud="-5.810479" altitud="166"></coordenadas>
 				</lugarResidencia>
 			</residencia>
-			<foto>multimedia/generico.jpg</foto>
+			<foto>generico.jpg</foto>
 		</datos>
 		<persona nombre="Mireia" apellidos="García Rodríguez">
 			<datos>
@@ -109,7 +109,7 @@
 						<coordenadas latitud="43.393217" longitud="-5.606987" altitud="270"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 		<persona nombre="Lara" apellidos="Díaz García">
@@ -125,7 +125,7 @@
 						<coordenadas latitud="43.399113" longitud="-5.784678" altitud="179"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 		<persona nombre="Enrique" apellidos="Riesgo García">
@@ -141,7 +141,7 @@
 						<coordenadas latitud="42.196846" longitud="-7.61141" altitud="609"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 	</persona>
@@ -158,7 +158,7 @@
 					<coordenadas latitud="43.5361589" longitud="-7.0436775" altitud="68"></coordenadas>
 				</lugarResidencia>
 			</residencia>
-			<foto>multimedia/generico.jpg</foto>
+			<foto>generico.jpg</foto>
 		</datos>
 		<persona nombre="Manuel" apellidos="Beltrán Díaz">
 			<datos>
@@ -173,7 +173,7 @@
 						<coordenadas latitud="43.3224219" longitud="-1.9838889" altitud="25"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 		<persona nombre="Sara" apellidos="Suárez Cabal">
@@ -189,7 +189,7 @@
 						<coordenadas latitud="42.343926" longitud="-3.696977" altitud="873"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 		<persona nombre="Martina" apellidos="Gómez García">
@@ -205,7 +205,7 @@
 						<coordenadas latitud="42.2376602" longitud="-8.7247205" altitud="22"></coordenadas>
 					</lugarResidencia>
 				</residencia>
-				<foto>multimedia/generico.jpg</foto>
+				<foto>generico.jpg</foto>
 			</datos>
 		</persona>
 	</persona>

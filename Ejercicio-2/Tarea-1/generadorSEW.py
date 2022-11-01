@@ -16,6 +16,9 @@ def main():
 
 
 def cargarXML(nombre):
+    """
+    Carga el fichero xml de nombre indicado
+    """
     try:
         arbol = ET.parse(nombre)
         return arbol
@@ -28,6 +31,9 @@ def cargarXML(nombre):
 
 
 def procesar(arbol):
+    """
+    Procesa el árbol y genera el tipo de archivo que se indicó en línea de comandos
+    """
     try:
         tipo = sys.argv[2]
 
@@ -43,7 +49,15 @@ def procesar(arbol):
         print("ERROR - Falta el tipo de procesado [html | kml | svg]")
 
 
+
+# --------------------
+# GENERACIÓN DE HTML 
+# --------------------
+
 def generaHTML(arbol):
+    """
+    Genera el html a partir del árbol indicado
+    """
     archivoHtml = open("redSocialHTML.html", "w", encoding="utf8")
     generaCabeceraHTML(archivoHtml)
     generaCuerpoHTML(archivoHtml, arbol)
@@ -52,6 +66,9 @@ def generaHTML(arbol):
 
 
 def generaCabeceraHTML(archivo):
+    """
+    Genera la cabecera del html, siempre es igual
+    """
     archivo.write("<!DOCTYPE HTML>")
     archivo.write("<html lang=\"es\">")
     archivo.write("<head>")
@@ -68,6 +85,9 @@ def generaCabeceraHTML(archivo):
 
 
 def generaCuerpoHTML(archivo, arbol):
+    """
+    Genera el cuerpo del html, la parte variable
+    """
     archivo.write("<h1>Miembros de la red social</h1>")
     raiz = arbol.getroot()
     
@@ -76,40 +96,11 @@ def generaCuerpoHTML(archivo, arbol):
     archivo.write("<ul>")
     # datos de la persona
     for dato in raiz.findall("datos/*"):
-        # datos individuales
-        if(len(dato.text.strip("\n").strip("\t"))!=0):
-            archivo.write("<li>"+dato.tag+": "+dato.text+"</li>")
-        # lugares
+        if(dato.tag=="foto"):
+            archivo.write("<li><img src=\"multimedia/"+dato.text+"\""+" alt=\"imagen\"/></li>")
+        elif(dato.tag=="video"):
+            archivo.write("<li><video controls><source src=\"multimedia/"+dato.text+"\""+" type=\"video/mp4\"/></video></li>")
         else:
-            archivo.write("<li>"+dato.tag)
-            archivo.write("<ul>")
-            for contenido in dato.findall("*"):
-                # fecha
-                if(len(contenido.text.strip("\n").strip("\t"))!=0):
-                    archivo.write("<li>"+contenido.tag+": "+contenido.text+"</li>")
-                # lugares
-                else:
-                    archivo.write("<li>"+contenido.tag+": "+contenido.attrib.get("nombre")+"</li>")
-                    coordenadas = contenido.find("coordenadas")
-                    archivo.write("<li>")
-                    archivo.write("Latitud: "+coordenadas.attrib.get("latitud"))
-                    archivo.write(", Longitud: "+coordenadas.attrib.get("longitud"))
-                    archivo.write(", Altitud: "+coordenadas.attrib.get("altitud"))
-                    archivo.write("</li>")
-            archivo.write("</ul>")
-            archivo.write("</li>")
-    archivo.write("</ul>")
-
-    generaHTMLAmigosDe(raiz, archivo)
-
-    
-
-def generaHTMLAmigosDe(persona, archivo):
-    for persona in persona.findall("persona"):
-        archivo.write("<h2>"+persona.attrib.get('nombre')+" "+persona.attrib.get('apellidos')+"</h2>")
-        archivo.write("<ul>")
-        # datos de la persona
-        for dato in persona.findall("datos/*"):
             # datos individuales
             if(len(dato.text.strip("\n").strip("\t"))!=0):
                 archivo.write("<li>"+dato.tag+": "+dato.text+"</li>")
@@ -132,14 +123,71 @@ def generaHTMLAmigosDe(persona, archivo):
                         archivo.write("</li>")
                 archivo.write("</ul>")
                 archivo.write("</li>")
+    archivo.write("</ul>")
+
+    generaHTMLAmigosDe(raiz, archivo)
+
+def generaHTMLAmigosDe(persona, archivo):
+    """
+    Genera el html de los amigos de la persona indicada en el archivo indicado
+    """
+    for persona in persona.findall("persona"):
+        archivo.write("<h2>"+persona.attrib.get('nombre')+" "+persona.attrib.get('apellidos')+"</h2>")
+        archivo.write("<ul>")
+        # datos de la persona
+        for dato in persona.findall("datos/*"):
+            if(dato.tag=="foto"):
+                archivo.write("<li><img src=\"multimedia/"+dato.text+"\""+" alt=\"imagen\"/></li>")
+            elif(dato.tag=="video"):
+                archivo.write("<li><video controls><source src=\"multimedia/"+dato.text+"\""+" type=\"video/mp4\"/></video></li>")
+            else:
+                # datos individuales
+                if(len(dato.text.strip("\n").strip("\t"))!=0):
+                    archivo.write("<li>"+dato.tag+": "+dato.text+"</li>")
+                # lugares
+                else:
+                    archivo.write("<li>"+dato.tag)
+                    archivo.write("<ul>")
+                    for contenido in dato.findall("*"):
+                        # fecha
+                        if(len(contenido.text.strip("\n").strip("\t"))!=0):
+                            archivo.write("<li>"+contenido.tag+": "+contenido.text+"</li>")
+                        # lugares
+                        else:
+                            archivo.write("<li>"+contenido.tag+": "+contenido.attrib.get("nombre")+"</li>")
+                            coordenadas = contenido.find("coordenadas")
+                            archivo.write("<li>")
+                            archivo.write("Latitud: "+coordenadas.attrib.get("latitud"))
+                            archivo.write(", Longitud: "+coordenadas.attrib.get("longitud"))
+                            archivo.write(", Altitud: "+coordenadas.attrib.get("altitud"))
+                            archivo.write("</li>")
+                    archivo.write("</ul>")
+                    archivo.write("</li>")
         archivo.write("</ul>")
         generaHTMLAmigosDe(persona, archivo)
 
 def generaCierreHTML(archivo):
+    """
+    Genera el cierre del html, siempre es igual
+    """
     archivo.write("</main>")
     archivo.write("</body>")
     archivo.write("</html>")
     archivo.close()
+
+
+
+# --------------------
+# GENERACIÓN DE KML 
+# --------------------
+
+
+
+
+
+# --------------------
+# GENERACIÓN DE SVG 
+# --------------------
 
 
 if __name__ == "__main__":

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persona nombre="Diego" apellidos="Villa García">
+	<datos>
+		<nacimiento>
+			<fechaNacimiento>22/06/2001</fechaNacimiento>
+			<lugarNacimiento nombre="Oviedo">
+				<coordenadas longitud="43.360422" latitud="-5.845053" altitud="242"></coordenadas>
+			</lugarNacimiento>
+		</nacimiento>
+		<residencia>
+			<lugarResidencia nombre="La Corredoria">
+				<coordenadas longitud="43.387149" latitud="-5.823475" altitud="166"></coordenadas>
+			</lugarResidencia>
+		</residencia>
+		<foto>generico.jpg</foto>
+		<video>video.mp4</video>
+		<comentario>Estudiante de SEW</comentario>
+	</datos>
+	<persona nombre="Eduardo" apellidos="Martínez Suárez">
+		<datos>
+			<nacimiento>
+				<fechaNacimiento>12/08/2001</fechaNacimiento>
+				<lugarNacimiento nombre="Gijón">
+					<coordenadas longitud="43.544942" latitud="-5.66275" altitud="0"></coordenadas>
+				</lugarNacimiento>
+			</nacimiento>
+			<residencia>
+				<lugarResidencia nombre="Langreo">
+					<coordenadas longitud="43.295013" latitud="-5.683431" altitud="280"></coordenadas>
+				</lugarResidencia>
+			</residencia>
+			<foto>generico.jpg</foto>
+		</datos>
+		<persona nombre="Martín" apellidos="Suárez Gómez">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>25/09/1999</fechaNacimiento>
+					<lugarNacimiento nombre="Santander">
+						<coordenadas longitud="43.462041" latitud="-3.809972" altitud="23"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="Ribadesella">
+						<coordenadas longitud="43.461713" latitud="-5.058748" altitud="0"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+		<persona nombre="Marta" apellidos="Pérez Pérez">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>30/06/2001</fechaNacimiento>
+					<lugarNacimiento nombre="León">
+						<coordenadas longitud="42.597825" latitud="-5.57096" altitud="837"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="Cangas de Onís">
+						<coordenadas longitud="43.313614" latitud="-5.06585" altitud="424"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+		<persona nombre="Edgar" apellidos="López Gómez">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>22/06/2001</fechaNacimiento>
+					<lugarNacimiento nombre="Mieres">
+						<coordenadas longitud="43.248816" latitud="-5.772247" altitud="386"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="Navia">
+						<coordenadas longitud="43.539111" latitud="-6.72337" altitud="55"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+	</persona>
+	<persona nombre="Laura" apellidos="Menéndez Díaz">
+		<datos>
+			<nacimiento>
+				<fechaNacimiento>14/02/2001</fechaNacimiento>
+				<lugarNacimiento nombre="Avilés">
+					<coordenadas longitud="43.555444" latitud="-5.922247" altitud="27"></coordenadas>
+				</lugarNacimiento>
+			</nacimiento>
+			<residencia>
+				<lugarResidencia nombre="Lugones">
+					<coordenadas longitud="43.402768" latitud="-5.810479" altitud="166"></coordenadas>
+				</lugarResidencia>
+			</residencia>
+			<foto>generico.jpg</foto>
+		</datos>
+		<persona nombre="Mireia" apellidos="García Rodríguez">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>29/02/2002</fechaNacimiento>
+					<lugarNacimiento nombre="Pola de Lena">
+						<coordenadas longitud="43.161569" latitud="-5.828135" altitud="502"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="Tabladiello">
+						<coordenadas longitud="43.393217" latitud="-5.606987" altitud="270"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+		<persona nombre="Lara" apellidos="Díaz García">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>02/11/2001</fechaNacimiento>
+					<lugarNacimiento nombre="Cangas de Narcea">
+						<coordenadas longitud="43.238485 " latitud="-6.506993" altitud="523"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="Viella">
+						<coordenadas longitud="43.399113" latitud="-5.784678" altitud="179"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+		<persona nombre="Enrique" apellidos="Riesgo García">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>28/12/2001</fechaNacimiento>
+					<lugarNacimiento nombre="Lugo">
+						<coordenadas longitud="43.046225" latitud="-7.473992" altitud="525"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="Ourense">
+						<coordenadas longitud="42.196846" latitud="-7.61141" altitud="609"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+	</persona>
+	<persona nombre="Javier" apellidos="Soldado Gómez">
+		<datos>
+			<nacimiento>
+				<fechaNacimiento>14/07/2001</fechaNacimiento>
+				<lugarNacimiento nombre="Tineo">
+					<coordenadas longitud="43.309275" latitud="-6.491952" altitud="557"></coordenadas>
+				</lugarNacimiento>
+			</nacimiento>
+			<residencia>
+				<lugarResidencia nombre="Ribadeo">
+					<coordenadas longitud="43.5361589" latitud="-7.0436775" altitud="68"></coordenadas>
+				</lugarResidencia>
+			</residencia>
+			<foto>generico.jpg</foto>
+		</datos>
+		<persona nombre="Manuel" apellidos="Beltrán Díaz">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>12/10/2001</fechaNacimiento>
+					<lugarNacimiento nombre="La Coruña">
+						<coordenadas longitud="43.3709703" latitud="-8.3959425" altitud="16"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="San Sebastián">
+						<coordenadas longitud="43.3224219" latitud="-1.9838889" altitud="25"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+		<persona nombre="Sara" apellidos="Suárez Cabal">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>01/04/2002</fechaNacimiento>
+					<lugarNacimiento nombre="Salamanca">
+						<coordenadas longitud="40.9651572" latitud="-5.6640182" altitud="820"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="Burgos">
+						<coordenadas longitud="42.343926" latitud="-3.696977" altitud="873"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+		<persona nombre="Martina" apellidos="Gómez García">
+			<datos>
+				<nacimiento>
+					<fechaNacimiento>05/09/2002</fechaNacimiento>
+					<lugarNacimiento nombre="Zamora">
+						<coordenadas longitud="41.50429182277301" latitud="-5.744328378518475" altitud="641"></coordenadas>
+					</lugarNacimiento>
+				</nacimiento>
+				<residencia>
+					<lugarResidencia nombre="Vigo">
+						<coordenadas longitud="42.2376602" latitud="-8.7247205" altitud="22"></coordenadas>
+					</lugarResidencia>
+				</residencia>
+				<foto>generico.jpg</foto>
+			</datos>
+		</persona>
+	</persona>
+</persona>

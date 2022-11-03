@@ -101,7 +101,7 @@ def generaCuerpoHTML(archivo, arbol):
     # datos de la persona
     for dato in raiz.findall("datos/*"):
         if(dato.tag=="foto"):
-            archivo.write("<li><img src=\"multimedia/"+dato.text+"\""+" alt=\"imagen\"/></li>")
+            archivo.write("<li><img src=\"multimedia/"+dato.text+"\""+" alt=\"imagen de "+raiz.attrib.get('nombre')+" "+raiz.attrib.get('apellidos')+"\"/></li>")
         elif(dato.tag=="video"):
             archivo.write("<li><video controls><source src=\"multimedia/"+dato.text+"\""+" type=\"video/mp4\"/></video></li>")
         else:

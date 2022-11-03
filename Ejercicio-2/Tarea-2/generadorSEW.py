@@ -268,10 +268,144 @@ def generaCierreKML(archivo):
     archivo.write("</kml>")
 
 
+
+
+
 # --------------------
 # GENERACIÓN DE SVG 
 # --------------------
 
+def generaSVG(arbol):
+    """
+    Genera el archivo SVG a partir del árbol indicado
+    """
+    alturaAprox = len(arbol.getroot().findall(".//persona")) * 400 / 4
+    archivoSvg = open("redSocialSVG.svg", "w", encoding="utf8")
+    generaCabeceraSVG(archivoSvg, alturaAprox)
+    generaCuerpoSVG(archivoSvg, arbol)
+    generaCierreSVG(archivoSvg)
+    print("Generado correctamente en el fichero redSocialSVG.svg")
+
+def generaCabeceraSVG(archivo, alturaAprox):
+    """
+    Genera la cabecera del SVG
+    """
+    archivo.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
+    archivo.write("<svg width=\"auto\" height=\""+str(alturaAprox)+"\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">")
+
+def generaCuerpoSVG(archivo, arbol):
+    """
+    Genera el cuerpo del SVG en el archivo a partir del arbol
+    """
+    raiz = arbol.getroot()
+    # variables para ir colocando los rectángulos y el texto
+    posX = 20
+    posY = 20
+    posXTexto = 30
+    posYTexto = 35
+
+    # raiz (primera persona)
+    archivo.write("<rect x=\""+str(posX)+"\" y=\""+str(posY)+"\" width=\"250\" height=\"200\" style=\"fill:white;stroke:black;stroke-width:1\"/>")
+    archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\" style=\"fill:blue\">"+raiz.attrib.get('nombre')+" "+raiz.attrib.get('apellidos')+" </text>")
+    posYTexto += 15
+
+    # datos de la persona
+    for dato in raiz.findall("datos/*"):
+        if(not (dato.tag=="foto" or dato.tag=="video")):
+            # datos individuales
+            if(len(dato.text.strip("\n").strip("\t"))!=0):
+                archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+dato.tag+": "+dato.text+"</text>")
+                posYTexto += 15
+            # lugares
+            else:
+                for contenido in dato.findall("*"):
+                    # fecha
+                    if(len(contenido.text.strip("\n").strip("\t"))!=0):
+                        archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+contenido.tag+": "+contenido.text+"</text>")
+                        posYTexto += 15
+                    # lugares
+                    else:
+                        archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+contenido.tag+": "+contenido.attrib.get("nombre")+"</text>")
+                        posXTexto += 15
+                        posYTexto += 15
+                        coordenadas = contenido.find("coordenadas")
+                        archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                        +"latitud: "+coordenadas.attrib.get('latitud')+"</text>")
+                        posYTexto += 15
+                        archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                        +"longitud: "+coordenadas.attrib.get('longitud')+"</text>")
+                        posYTexto += 15
+                        archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                        +"altitud: "+coordenadas.attrib.get('altitud')+"</text>")
+                        posYTexto += 15
+                        posXTexto -= 15
+
+    generaSVGRestoDePersonas(raiz, archivo, posX + 300, posY, posX + 310, 35)
+
+def generaSVGRestoDePersonas(persona, archivo, posX, posY, posXTexto, posYTexto):
+    """
+    Genera todas los demás personas en el archivo a partir de la raíz y las 
+    coordenadas indicadas para el rectángulo y el texto
+    """
+    posXBorde = posX - 300
+    posYTextoOriginal = posYTexto
+    numPersonas = 1
+    for persona in persona.findall(".//persona"):
+        numPersonas += 1
+
+        archivo.write("<rect x=\""+str(posX)+"\" y=\""+str(posY)+"\" width=\"250\" height=\"200\" style=\"fill:white;stroke:black;stroke-width:1\"/>")
+        archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\" style=\"fill:blue\">"
+                        +persona.attrib.get('nombre')+" "+persona.attrib.get('apellidos')+" </text>")
+        posYTexto += 15
+        # datos de la persona
+        for dato in persona.findall("datos/*"):
+            if(not (dato.tag=="foto" or dato.tag=="video")):
+                # datos individuales
+                if(len(dato.text.strip("\n").strip("\t"))!=0):
+                    archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+dato.tag+": "+dato.text+"</text>")
+                    posYTexto += 15
+                # lugares
+                else:
+                    for contenido in dato.findall("*"):
+                        # fecha
+                        if(len(contenido.text.strip("\n").strip("\t"))!=0):
+                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+contenido.tag+": "+contenido.text+"</text>")
+                            posYTexto += 15
+                        # lugares
+                        else:
+                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+contenido.tag+": "+contenido.attrib.get("nombre")+"</text>")
+                            posXTexto += 15
+                            posYTexto += 15
+                            coordenadas = contenido.find("coordenadas")
+                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                            +"latitud: "+coordenadas.attrib.get('latitud')+"</text>")
+                            posYTexto += 15
+                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                            +"longitud: "+coordenadas.attrib.get('longitud')+"</text>")
+                            posYTexto += 15
+                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                            +"altitud: "+coordenadas.attrib.get('altitud')+"</text>")
+                            posYTexto += 15
+                            posXTexto -= 15
+
+        if(numPersonas % 4 == 0):
+            posY += 300
+            posYTexto = posY + 15
+            posX = posXBorde
+            posXTexto = posX + 10
+            posYTexto = posY + 15
+            posYTextoOriginal = posY +15
+        else:
+            posX += 300
+            posXTexto = posX + 10
+            posYTexto = posYTextoOriginal
+                        
+
+def generaCierreSVG(archivo):
+    """
+    Genera el cierre del SVG
+    """
+    archivo.write("</svg>")
 
 if __name__ == "__main__":
     main()

@@ -9,6 +9,8 @@ body {
     background-color: white;
     font-size: 1.1em;
     font-family: Helvetica, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Especificidad 001 */

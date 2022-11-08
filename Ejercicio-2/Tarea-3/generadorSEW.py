@@ -311,7 +311,53 @@ def generaCuerpoSVG(archivo, arbol):
 
     # datos de la persona
     for dato in raiz.findall("datos/*"):
-        if(not (dato.tag=="foto" or dato.tag=="video")):
+        # datos individuales
+        if(len(dato.text.strip("\n").strip("\t"))!=0):
+            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+dato.tag+": "+dato.text+"</text>")
+            posYTexto += 15
+        # lugares
+        else:
+            for contenido in dato.findall("*"):
+                # fecha
+                if(len(contenido.text.strip("\n").strip("\t"))!=0):
+                    archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+contenido.tag+": "+contenido.text+"</text>")
+                    posYTexto += 15
+                # lugares
+                else:
+                    archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+contenido.tag+": "+contenido.attrib.get("nombre")+"</text>")
+                    posXTexto += 15
+                    posYTexto += 15
+                    coordenadas = contenido.find("coordenadas")
+                    archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                    +"latitud: "+coordenadas.attrib.get('latitud')+"</text>")
+                    posYTexto += 15
+                    archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                    +"longitud: "+coordenadas.attrib.get('longitud')+"</text>")
+                    posYTexto += 15
+                    archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
+                                    +"altitud: "+coordenadas.attrib.get('altitud')+"</text>")
+                    posYTexto += 15
+                    posXTexto -= 15
+
+    generaSVGRestoDePersonas(raiz, archivo, posX + 300, posY, posX + 310, 35)
+
+def generaSVGRestoDePersonas(persona, archivo, posX, posY, posXTexto, posYTexto):
+    """
+    Genera todas los demás personas en el archivo a partir de la raíz y las 
+    coordenadas indicadas para el rectángulo y el texto
+    """
+    posXBorde = posX - 300
+    posYTextoOriginal = posYTexto
+    numPersonas = 1
+    for persona in persona.findall(".//persona"):
+        numPersonas += 1
+
+        archivo.write("<rect x=\""+str(posX)+"\" y=\""+str(posY)+"\" width=\"250\" height=\"200\" style=\"fill:white;stroke:black;stroke-width:1\"/>")
+        archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\" style=\"fill:blue\">"
+                        +persona.attrib.get('nombre')+" "+persona.attrib.get('apellidos')+" </text>")
+        posYTexto += 15
+        # datos de la persona
+        for dato in persona.findall("datos/*"):
             # datos individuales
             if(len(dato.text.strip("\n").strip("\t"))!=0):
                 archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+dato.tag+": "+dato.text+"</text>")
@@ -339,54 +385,6 @@ def generaCuerpoSVG(archivo, arbol):
                                         +"altitud: "+coordenadas.attrib.get('altitud')+"</text>")
                         posYTexto += 15
                         posXTexto -= 15
-
-    generaSVGRestoDePersonas(raiz, archivo, posX + 300, posY, posX + 310, 35)
-
-def generaSVGRestoDePersonas(persona, archivo, posX, posY, posXTexto, posYTexto):
-    """
-    Genera todas los demás personas en el archivo a partir de la raíz y las 
-    coordenadas indicadas para el rectángulo y el texto
-    """
-    posXBorde = posX - 300
-    posYTextoOriginal = posYTexto
-    numPersonas = 1
-    for persona in persona.findall(".//persona"):
-        numPersonas += 1
-
-        archivo.write("<rect x=\""+str(posX)+"\" y=\""+str(posY)+"\" width=\"250\" height=\"200\" style=\"fill:white;stroke:black;stroke-width:1\"/>")
-        archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\" style=\"fill:blue\">"
-                        +persona.attrib.get('nombre')+" "+persona.attrib.get('apellidos')+" </text>")
-        posYTexto += 15
-        # datos de la persona
-        for dato in persona.findall("datos/*"):
-            if(not (dato.tag=="foto" or dato.tag=="video")):
-                # datos individuales
-                if(len(dato.text.strip("\n").strip("\t"))!=0):
-                    archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+dato.tag+": "+dato.text+"</text>")
-                    posYTexto += 15
-                # lugares
-                else:
-                    for contenido in dato.findall("*"):
-                        # fecha
-                        if(len(contenido.text.strip("\n").strip("\t"))!=0):
-                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+contenido.tag+": "+contenido.text+"</text>")
-                            posYTexto += 15
-                        # lugares
-                        else:
-                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"+contenido.tag+": "+contenido.attrib.get("nombre")+"</text>")
-                            posXTexto += 15
-                            posYTexto += 15
-                            coordenadas = contenido.find("coordenadas")
-                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
-                                            +"latitud: "+coordenadas.attrib.get('latitud')+"</text>")
-                            posYTexto += 15
-                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
-                                            +"longitud: "+coordenadas.attrib.get('longitud')+"</text>")
-                            posYTexto += 15
-                            archivo.write("<text x=\""+str(posXTexto)+"\" y=\""+str(posYTexto)+"\">"
-                                            +"altitud: "+coordenadas.attrib.get('altitud')+"</text>")
-                            posYTexto += 15
-                            posXTexto -= 15
 
         if(numPersonas % 4 == 0):
             posY += 300
